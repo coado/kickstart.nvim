@@ -31,6 +31,14 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>rl', ':source %<CR>', { desc = 'Execute current lua file - run lua' })
+vim.keymap.set(
+  'n',
+  '<leader>rc',
+  ':! cd %:h && g++ % -o %:r.out && ./%:t:r.out<CR>',
+  { noremap = true, silent = true, desc = 'Execute current cpp file - run cpp' }
+)
+
 local map = vim.api.nvim_set_keymap
 local table_opts = { noremap = true, silent = true }
 

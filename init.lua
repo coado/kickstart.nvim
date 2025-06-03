@@ -20,8 +20,31 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
+
+local job_id = 0
+vim.keymap.set('n', '<space>st', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 5)
+
+  job_id = vim.bo.channel
+end)
+
+-- send any command to cmd
+vim.keymap.set('n', '<space>example', function()
+  vim.fn.chansend(job_id, { "echo 'hi'" })
+end)
+
 require 'lazy-bootstrap'
 require 'lazy-setup'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vtm: ts=2 sts=2 sw=2 et

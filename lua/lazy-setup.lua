@@ -17,6 +17,23 @@ require('lazy').setup({
   'terryma/vim-multiple-cursors',
   'm4xshen/autoclose.nvim',
   {
+    dir = '~/projects/dashboard.nvim/',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup()
+    end,
+  },
+  -- {
+  --   'nvimdev/dashboard-nvim',
+  --   event = 'VimEnter',
+  --   config = function()
+  --     require('dashboard').setup {
+  --       -- config
+  --     }
+  --   end,
+  --   dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  -- },
+  {
     {
       'romgrk/barbar.nvim',
       dependencies = {
@@ -536,8 +553,8 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
-        lua = { 'stylua' },
         cpp = { 'clang-format' },
+        lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
