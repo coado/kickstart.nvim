@@ -38,6 +38,7 @@ vim.keymap.set(
   ':! cd %:h && g++ % -o %:r.out && ./%:t:r.out<CR>',
   { noremap = true, silent = true, desc = 'Execute current cpp file - run cpp' }
 )
+vim.keymap.set('n', '<leader>rd', ":lua require('dashboard').run()", { desc = 'Execute dashboard.run()' })
 
 local map = vim.api.nvim_set_keymap
 local table_opts = { noremap = true, silent = true }
